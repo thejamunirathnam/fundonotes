@@ -1,0 +1,282 @@
+$bgcolor:#fff;
+$textcolor:black;
+$fontsize:14px;
+
+@mixin mainborder($margintop,$width,$minwidth){
+    width:$width ;
+    min-width:$minwidth;
+    min-height: 450px;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    display: block;
+    margin-top: $margintop;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px 30px 36px;
+    @media only screen and (max-width: 900px) {
+        // border: none;
+        // margin-top: 0;
+        min-width:450px;
+        // margin-right: auto;
+        // margin-left: 0;
+        // padding: 0px 15px;
+        // min-width: 93%;
+	}
+    @media only screen and (max-width: 600px) {
+        border: none;
+        margin-top: 0;
+        margin-right: auto;
+        margin-left: 0;
+        padding: 0px 15px;
+        min-width: 93%;
+	}
+ }
+ @mixin accountname($padbottom,$fontsize,$height) {
+    color: #202124;
+    height: $height;
+    letter-spacing: .1px;
+    padding-bottom: $padbottom;
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: $fontsize;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-top: 0;
+ }
+
+ @mixin fundoo {
+    font-size: x-large;
+    font-weight: 600;
+    text-align: start;
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;  
+ }
+
+ @mixin textboxconf($height,$top) {
+    display: inline-flex;
+    width: 100%;
+    @media only screen and (max-width: 600px) {
+        display: flex;
+	}
+    input {
+        height: $height;
+        width: 100%; 
+        font-size: 14px;
+        padding: 0px 14px;
+    }
+    label {
+        height: 36px;
+        top: $top;
+        font-size: 14px;
+        }
+    label[data-shrink="true"] {
+        top: 0;
+        }
+ }
+
+ @mixin buttondiv($width) {
+    width: $width;
+    margin-top: 30px;
+    text-align: start;
+    display: inline-flex;
+ }
+ .MuiSvgIcon-fontSizeSmall {
+    font-size: 11px !important;
+    border: 1px solid;
+    color: white;
+    width: 12px;
+    height: 12px;
+    background: #d93025;
+    border-radius: 10px;
+}
+.errordiv{
+    margin-top: -15px;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 0.75rem;
+    text-align: left;
+    display: inline-flex;
+    margin-bottom: 20px;
+    min-height: 25px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    letter-spacing: 0.03333em;
+    
+}
+.column {
+    float: left;
+    padding: 10px;
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+	}
+}
+
+
+.imagediv{
+    margin-top: 60px;
+    padding: 35px;
+    text-align: center;
+
+    .imagecaption{
+        font-size: 16px;
+        font-weight: 300;
+        font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+        color: #202124c4;
+        line-height: 1.3;
+    }
+}
+.second{
+    background-color: white;
+    width: calc(100% - 55%);
+    @media only screen and (max-width: 900px) {
+        display: none;
+        width: 0px;
+	}
+}
+.first{
+    background-color: white;
+    width: 55%;
+    @media only screen and (max-width: 900px) {
+        width: 100%;
+	} 
+}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .row{
+      display: inline-flex;
+      width: 100%;
+  }
+  .buttondiv {
+  @include buttondiv(50%);
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+}
+  }
+  .signbutton{
+      padding: 0px;
+    @include buttondiv(100%);
+  }
+  .sign{
+    width: 80%;
+    padding: 10px;
+    padding-left: 0;
+  }
+  .emailfigure{
+    background-image: linear-gradient(to bottom,rgba(233,233,233,0) 0%,rgba(233,233,233,0) 62.22%,rgba(233,233,233,1) 40.22%,rgba(233,233,233,0) 100%);
+    margin: 0;
+  }
+  .learn{
+    color: #5f6368;
+    font-size: 14px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    letter-spacing: 0.03333em;
+    line-height: 1.4286;
+  }
+  .verification{
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+  .fphone{
+    padding-bottom: 25px;
+  }
+  .confirmspan{
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 0.75rem;
+    text-align: left;
+    /* padding-left: 2px; */
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    letter-spacing: 0.03333em;
+  }
+
+.spantable{
+    @include accountname(16px,24px,50px);
+}
+.signin{
+    @include accountname(0px,24px,40px);
+    width: 100%;
+    text-align: center;
+}
+.signaccount{
+    @include accountname(0px,16px,40px);
+    width: 100%;
+    text-align: center;
+}
+.main{
+    @include mainborder(30px,50%,750px);
+}
+.Signinmain{
+    @include mainborder(60px,28%,380px);
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+	}
+}
+
+#root{
+    width: 100%;
+}
+.textinputbox{
+   @include textboxconf(34px,-9px);
+}
+.signtextbox{
+   @include textboxconf(52px,0px);
+}
+.textdiv{
+    margin-right: 8px;
+    margin-bottom: 20px;
+    text-align: start;
+    width: 100%;
+}
+.fundo{
+  @include fundoo;
+}
+.signfundo{
+  @include fundoo;
+  text-align: center;
+}
+
+
+.emaildiv{
+    margin-right: 8px;
+    margin-bottom: 40px;
+    color:#4d92ed;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    text-align: start;
+}
+.emaildiv:hover{
+    background: #2196f30d;
+    color: 'rgb(63 81 181 / 50%)';
+    // font-weight: 400;
+}
+  .spandiv{
+    height: 55px;
+    text-align: start;
+
+  }
+  
+.MuiTypography-body1{
+font-size: 14px !important;
+}
+
+.signup{
+    background-color:$bgcolor;
+    color:$textcolor;
+    font-size: $fontsize;
+}
+.inputbox{
+    height: 36px;
+}
+.accountdiv{
+    height: 575px;
+    margin-top: 30px;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+}
+
+.spanclass{
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: 24px;
+}
