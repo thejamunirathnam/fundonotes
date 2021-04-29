@@ -33,7 +33,7 @@ export class Archive extends Component {
         })
       }
     }).catch((error) => {
-      console.log(error); // error msg displaying
+      console.log(error); // error msg displaying is 3 rd commit
     })
   }
 
