@@ -7,6 +7,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import { ThemeProvider } from '@material-ui/styles';
+
+import {userdata_update} from '../actions/index'
+import {connect} from 'react-redux'
+
 const axios_service = new Userservice();
 
 
@@ -30,6 +34,15 @@ const axios_service = new Userservice();
 //  }
  
 
+// redux for class components
+const mapStateToProps = state => ({    // getting the state 
+    emailvalue: state.Userdata
+});
+const mapDispatchToProps = () => {      // getting the state methods and wont take any parametr
+    return { 
+        userdata_update  
+    };
+};
 
 export class SignInpage extends Component {
     constructor(props) {
@@ -59,26 +72,26 @@ export class SignInpage extends Component {
       forgotpassword = () => {
         this.setState({ redirect: "/forgotpassword" });
       }
-    next = () =>{
-
-        // let dataa = {
-        //     email: this.state.email,
-        //     password: this.state.password
-        // }
+    next = () =>{ 
         let dataa = {
-            email: 'thejasre@gmail.com',
-            password: 'theja'
+            email: this.props.emailvalue.userdata,
+            password: this.state.password
         }
+        // let dataa = {
+        //     email: 'thejasre@gmail.com',
+        //     password: 'theja'
+        // }
         axios_service.Login(dataa).then((result)=>{
             console.log(result);
             if(result.status==200){
                 console.log("*************Login sucessss*****************");
+                this.props.userdata_update(result.data);
                 localStorage.setItem('fname', result.data.firstName);
                 localStorage.setItem('lname', result.data.lastName);
                 localStorage.setItem('email', result.data.email);
                 localStorage.setItem('id', result.data.id);
                 localStorage.setItem('userId', result.data.userId);
-                // aunthetication.onAuthentication();
+                console.log(this.props.emailvalue)
                 this.setState({ redirect: "/Dashboard" });
             }
           }).catch((error)=>{
@@ -165,4 +178,4 @@ export class SignInpage extends Component {
     }
 }
 
-export default SignInpage
+export default connect(mapStateToProps,mapDispatchToProps())(SignInpage)

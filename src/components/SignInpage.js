@@ -3,9 +3,17 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Redirect } from "react-router-dom";
 import Userservice from '../services/Userservice';
+
+import {userdata_update} from '../actions/index'
+import {connect} from 'react-redux'
+
 const axios_service = new Userservice();
 
-
+const mapDispatchToProps = () => {      // getting the state methods and wont take any parametr
+    return { 
+        userdata_update  
+    };
+};
 
 export class SignInpage extends Component {
     constructor(props) {
@@ -34,7 +42,10 @@ export class SignInpage extends Component {
       }
 
     next = () =>{
+        this.props.userdata_update(this.state.email)
+        if(this.state.email){
         this.setState({ redirect: "/password" });
+        }
     }
     
     render() {
@@ -107,4 +118,4 @@ export class SignInpage extends Component {
     }
 }
 
-export default SignInpage
+export default connect(null,mapDispatchToProps())(SignInpage)

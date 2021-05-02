@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
-import PriorityIcon from '@material-ui/icons/PriorityHighOutlined'
+import PriorityIcon from '@material-ui/icons/PriorityHighOutlined';
 
 import $ from "jquery";
 
@@ -22,6 +22,19 @@ const theme = createMuiTheme({
         primary: blue,
     },
 });
+
+
+
+// reux for class components
+// const mapStateToProps = state => ({    // getting the state 
+//     counter: state.counter
+// });
+
+// const mapDispatchToProps = () => {      // getting the state methods and wont take any parametr
+//     return { 
+//         userdata_update  
+//     };
+// };
 
 var dataa = {};
 
@@ -130,6 +143,7 @@ class Signup extends Component {
                console.log(result);
                if(result.data.data.success){
                    console.log("*************sucessss*****************");
+                //    this.props.userdata_update(result.data.data)
                    localStorage.setItem('user_details', result.data.data);
                    this.setState({ redirect: "/Dashboard" });
                }

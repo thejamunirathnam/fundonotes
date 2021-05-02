@@ -7,8 +7,15 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import { ThemeProvider } from '@material-ui/styles';
+
+import {userdata_update} from '../actions/index'
+import {connect} from 'react-redux'
+
 const axios_service = new Userservice();
 
+const mapStateToProps = state => ({    // getting the state 
+    userdata: state.Userdata
+});
 
 export class SignInpage extends Component {
     constructor(props) {
@@ -40,12 +47,12 @@ export class SignInpage extends Component {
       }
     next = () =>{
 
-        // let dataa = {
-        //     email: this.state.email,
-        // }
         let dataa = {
-            email: 'thejasre@gmail.com',
+            email: this.props.userdata.userdata,
         }
+        // let dataa = {
+        //     email: 'thejasre@gmail.com',
+        // }
         axios_service.ForgotPassword(dataa).then((result)=>{
             console.log(result);
             if(result.status==200){
@@ -104,4 +111,4 @@ export class SignInpage extends Component {
     }
 }
 
-export default SignInpage
+export default connect(mapStateToProps)(SignInpage)
